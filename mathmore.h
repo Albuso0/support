@@ -9,7 +9,7 @@ class ChebMore  // Polynomial in the form cos(L arccos (bx+c))=sum a_i * x^i
 {
 public:
     ChebMore(){}
-    ChebMore(int _L, double _b = 1, double _c = 0):L(_L),b(_b),c(_c){}
+    ChebMore(int L_in, double b_in = 1, double c_in = 0):L(L_in),b(b_in),c(c_in){}
     virtual ~ChebMore(){}
     
 

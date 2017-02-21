@@ -37,10 +37,10 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = 
-OBJECTS       = support.o	mathmore.o	main.o	commandline.o	## TODO: add all corresponding .o files here
+OBJECTS       = support.o	mathmore.o	main.o	main_test.o	commandline.o	## TODO: add all corresponding .o files here
 DIST          =
 DESTDIR       = #avoid trailing-slash linebreak
-TARGET        = support
+TARGET        = support		test
 
 
 first: all
@@ -69,6 +69,9 @@ all: $(TARGET)
 
 support: support.o main.o commandline.o mathmore.o
 	$(LINK) $(LFLAGS) support.o main.o commandline.o mathmore.o $(LIBS) -o support
+
+test: support.o main_test.o mathmore.o
+	$(LINK) $(LFLAGS) support.o mathmore.o main_test.o $(LIBS) -o test
 
 # $(TARGET):  $(OBJECTS)  
 # 	$(LINK) $(LFLAGS) $(OBJECTS) $(OBJCOMP) $(LIBS) -o $(TARGET)
@@ -105,3 +108,6 @@ main.o: main.cpp support.h commandline.h
 
 mathmore.o: mathmore.cpp mathmore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mathmore.o mathmore.cpp
+
+main_test.o: main_test.cpp support.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_test.o main_test.cpp

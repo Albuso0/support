@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <cmath>
 #include "support.h"
-#include "mathmore.h"
 #include "commandline.h"
 
 void print_param(const Support &support);
@@ -62,7 +61,8 @@ void print_results(const Support &support)
 {
     printf("Results:\n");
     printf("Sample size\t=%d\n",support.getSampleSize());
-    printf("Polynomial\t=%.6f \n",support.estimate());
+    printf("Polynomial\t=%d \n",(int)support.estimate());
+    printf("Plug-in\t\t=%d \n",(int)support.estimate_plug());
     printf("\n");
 }
 

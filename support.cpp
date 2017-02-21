@@ -50,8 +50,11 @@ double Support::getCoeff( int N ) const
 
 
 /* ----------------------OTHER ESTIMATORS-------------------------------- */
-// Ref for TG, CL1, CL2: "Estimating the Number of Classes via Sample Coverage, Chao-Lee, 1992"
-// Ref for JK: "Robust Estimation of Population Size When Capture Probabilities Vary Among Animals. K. P. Burnham and W. S. Overton, 1979"
+// Ref for TG: "The Population Frequencies of Species and the Estimation of Population Parameters", I. J. Good, 1953
+// Ref for CL1, CL2: "Estimating the Number of Classes via Sample Coverage", A. Chao and S. Lee, 1992
+// Ref for JK: "Robust Estimation of Population Size When Capture Probabilities Vary Among Animals", K. P. Burnham and W. S. Overton, 1979
+// Ref for original Chao 1: "Nonparametric estimation of the number of classes in a population." A. Chao, 1984
+// Ref for this bias-corrected Chao 1: "Estimating species richness", N. J. Gotelli and R. K. Colwell, 2011
 
 double Support::estimate_plug() const
 {
@@ -119,7 +122,7 @@ double Support::estimate_CL1() const // for small coefficient of variation
     double sum = 0.0;
     for ( const auto & pair : fin )
         sum += pair.first*( pair.first-1 )*pair.second;
-    double gamma_sq = std::max( estimate_TG()*sum/n/(n-1) - 1 , 0.0 );
+    double gamma_sq = std::max( 1.0*estimate_TG()*sum/n/(n-1) - 1 , 0.0 );
     return N1 + n*(1-C)/C*gamma_sq;
 }
 
@@ -132,7 +135,7 @@ double Support::estimate_CL2() const // for large coefficient of variation
     double sum = 0.0;
     for ( const auto & pair : fin )
         sum += pair.first*( pair.first-1 )*pair.second;
-    double gamma_sq = std::max( estimate_TG()*sum/n/(n-1) - 1 , 0.0 );
+    double gamma_sq = std::max( 1.0*estimate_TG()*sum/n/(n-1) - 1 , 0.0 );
     double gamma_sq2 = std::max( gamma_sq*( 1 + n*(1-C)*sum/n/(n-1)/C ), 0.0 );
 	
     return N1 + n*(1-C)/C*gamma_sq2;

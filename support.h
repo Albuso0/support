@@ -1,8 +1,8 @@
 #ifndef SUPPORT_H
 #define SUPPORT_H
 
-#include <map>
 #include <vector>
+#include <string>
 
 class Support
 {

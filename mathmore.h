@@ -1,16 +1,9 @@
 #ifndef MATHMORE_H
 #define MATHMORE_H
-#include <memory>
+
 #include <vector>
 
-
 long long binom(unsigned n, unsigned k);
-
-double rmse( const std::vector<int> &v, int truth );
-double stdev( const std::vector<int> &v );
-double mean( const std::vector<int> &v );
-double min_positive_normalized( const std::vector<double> &p ); // 0<=output<=1
-double cnt_positive( const std::vector<double> &p );
 
 class ChebMore  // Polynomial in the form cos(L arccos (bx+c))=sum a_i * x^i
 {

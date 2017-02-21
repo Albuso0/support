@@ -30,61 +30,6 @@ long long binom(unsigned n, unsigned k)
 }
 
 
-double mean( const std::vector<int> &v)
-{
-    return (std::accumulate(v.begin(), v.end(), 0.0) * 1.0 / v.size()); 
-}
-
-double rmse( const std::vector<int> &v, int truth )
-{
-    double sum = 0;
-    for ( const auto &x : v )
-        sum += 1.0*(x-truth)*(x-truth);
-    return sqrt( sum / v.size() );
-}
-
-double stdev( const std::vector<int> &v )
-{
-    double sum = std::accumulate(v.begin(), v.end(), 0.0);
-    double mean = sum / v.size();
-
-    std::vector<double> diff(v.size());
-    std::transform(v.begin(), v.end(), diff.begin(), std::bind2nd(std::minus<double>(), mean));
-    double sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
-    return std::sqrt(sq_sum / (v.size()-1) );
-}
-
-
-double min_positive_normalized( const std::vector<double> &p ) // p may not be normalized.
-{
-    double sum = std::accumulate(p.begin(), p.end(), 0.0);
-    double min = 1.0;
-    for ( const auto &x : p )
-        if ( (x>0) && (x/sum < min) )
-            min = x/sum;
-    return min;
-}
-
-double cnt_positive( const std::vector<double> &p )
-{
-    int cnt = 0;
-    for ( const auto &x : p )
-        if ( x>0 )
-            cnt++;
-    return cnt;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 std::vector<double> ChebMore::expand_basic() const // Expansion of cos(L arccos x)
 {

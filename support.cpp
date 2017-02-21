@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <map>
 
 
 
@@ -41,6 +42,8 @@ double Support::getCoeff( int N ) const
     return (1+result);
 }
 /* ----------------------END POLYNOMIAL ESTIMATOR NO SPLITTING-------------------------------- */
+
+
 
 
 
@@ -134,13 +137,17 @@ double Support::estimate_CL2() const // for large coefficient of variation
 	
     return N1 + n*(1-C)/C*gamma_sq2;
 }
-
 /* ----------------------END OTHER ESTIMATORS-------------------------------- */
 
 
 
 
 
+
+
+
+
+/* ----------------------INITIALIZATION-------------------------------- */
 Support::Support()
 {
 }
@@ -153,8 +160,18 @@ Support::Support(double p_min)
     setDegree( 0.45*log(1.0/pmin) );      // Default L = 0.45 * log(1/pmin)
     setInterval( 0.5*log(1.0/pmin) );     // Default interval [pmin, 0.5*log(1/pmin)/n]
 }
+/* ----------------------END INITIALIZATION-------------------------------- */
 
 
+
+
+
+
+
+
+
+
+/* ----------------------FINGERPRINT OPERATIONS-------------------------------- */
 void Support::setFin(const std::string filename) 
 {
     fin.clear();
@@ -236,3 +253,4 @@ void Support::setHist(const std::string filename)
         n += (freq * cnt);
     }
 }
+/* ----------------------END FINGERPRINT OPERATIONS-------------------------------- */

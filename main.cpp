@@ -31,8 +31,8 @@ int main(int argc, char *argv[])
     printf("\n");
     // Configure estimator
     Support support( pmin );  // set pmin
-    support.setDegree( L );   // set 
-    support.setInterval( M ); // set
+    support.setDegree( L );   // set degree    =L
+    support.setInterval( M ); // set interval  =[pmin,M/n]
     print_param(support);
 
     // Input fingerprint from file

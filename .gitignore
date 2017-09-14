@@ -1,3 +1,4 @@
 *.o
 support
 test
+__pycache__/*

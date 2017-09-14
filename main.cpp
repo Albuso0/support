@@ -63,6 +63,11 @@ void print_results(const Support &support)
     printf("Sample size\t=%d\n",support.getSampleSize());
     printf("Polynomial\t=%d \n",(int)support.estimate());
     printf("Plug-in\t\t=%d \n",(int)support.estimate_plug());
+    printf("Jackknife\t=%d \n",(int)support.estimate_J1());
+    printf("Turing-Good\t=%d \n",(int)support.estimate_TG());
+    printf("Chao1\t\t=%d \n",(int)support.estimate_Chao1());
+    printf("Chao-Lee1\t=%d \n",(int)support.estimate_CL1());
+    printf("Chao-Lee2\t=%d \n",(int)support.estimate_CL2());
     printf("\n");
 }
 
